@@ -1,34 +1,120 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Order</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #28a745;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #218838;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            width: 100%;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Order Your Medicines</h2>
+        <form id="orderForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="phone">Contact Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            
+            <label for="prescription">Upload Prescription (if any):</label>
+            <input type="file" id="prescription" name="prescription">
+            
+            <label for="medicines">Medicine Names (if no prescription):</label>
+            <textarea id="medicines" name="medicines" placeholder="List medicine names here..."></textarea>
+            
+            <button type="submit">Place Order</button>
+        </form>
+        <p id="confirmation"></p>
+    </div>
+    
+    <footer>
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:medicalneedsss@gmail.com">medicalneedsss@gmail.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/8185903453">8185903453</a></p>
+    </footer>
+    
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("name").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let medicines = document.getElementById("medicines").value.trim();
 
-.container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+            if (!name || !phone || !medicines) {
+                alert("Please fill all required fields.");
+                return;
+            }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+            let confirmationMessage = "Your order has been placed! We will contact you soon.";
+            document.getElementById("confirmation").innerText = confirmationMessage;
 
-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-footer {
-    margin-top: 20px;
-}
+            let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
+            
+            let whatsappURL = `https://api.whatsapp.com/send?phone=918185903453&text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.location.href = whatsappURL;
+        });
+    </script>
+</body>
+</html>
