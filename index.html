@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Order - Fast & Reliable</title>
+    <meta name="description" content="Order medicines online quickly and easily. Upload your prescription or enter medicine names, and get fast delivery to your doorstep.">
+    <meta name="keywords" content="medicine order, online pharmacy, fast medicine delivery, buy medicines online">
+    <meta name="author" content="Medical Needs">
+    <title>Medicine Order - Fast & Reliable | Online Pharmacy</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
@@ -78,10 +81,11 @@
     </style>
 </head>
 <body>
-    <div class="header">Order Medicines Online</div>
+    <div class="header">Order Medicines Online - Fast Delivery</div>
     <div class="banner"></div>
     <div class="container">
-        <h2><i class="fas fa-pills"></i> Order Your Medicines</h2>
+        <h2><i class="fas fa-pills"></i> Order Your Medicines Online</h2>
+        <p>Upload your prescription or enter medicine names below. Get fast delivery in just 10 minutes!</p>
         <form id="orderForm">
             <input type="text" id="name" placeholder="Full Name" required>
             <input type="text" id="phone" placeholder="Contact Number" required>
@@ -92,27 +96,24 @@
         <p id="confirmation"></p>
     </div>
     <footer>
-    <p>Contact Us: <a href="mailto:medicalneedsss@gmail.com">medicalneedsss@gmail.com</a> | <a href="https://wa.me/918185903453">WhatsApp: 8185903453</a></p>
-</footer>
-
-<script>
-    document.getElementById("orderForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        let name = document.getElementById("name").value.trim();
-        let phone = document.getElementById("phone").value.trim();
-        let medicines = document.getElementById("medicines").value.trim();
-        if (!name || !phone || !medicines) {
-            alert("Please fill all required fields.");
-            return;
-        }
-        let confirmationMessage = "Your order has been placed! We will contact you soon.";
-        document.getElementById("confirmation").innerText = confirmationMessage;
-        
-        let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
-        let whatsappURL = `https://wa.me/918185903453?text=${encodeURIComponent(whatsappMessage)}`;
-        
-        setTimeout(() => {
+        <p>Contact Us: <a href="mailto:medicalneedsss@gmail.com">medicalneedsss@gmail.com</a> | <a href="https://wa.me/918185903453">WhatsApp: 8185903453</a></p>
+    </footer>
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let medicines = document.getElementById("medicines").value.trim();
+            if (!name || !phone || !medicines) {
+                alert("Please fill all required fields.");
+                return;
+            }
+            let confirmationMessage = "Your order has been placed! We will contact you soon.";
+            document.getElementById("confirmation").innerText = confirmationMessage;
+            let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
+            let whatsappURL = `https://wa.me/918185903453?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, "_blank");
-        }, 1000);
-    });
-</script>
+        });
+    </script>
+</body>
+</html>
