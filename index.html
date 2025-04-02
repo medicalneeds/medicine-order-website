@@ -94,15 +94,25 @@
     <footer>
         <p>Contact Us: <a href="mailto:medicalneedsss@gmail.com">medicalneedsss@gmail.com</a> | <a href="https://wa.me/8185903453">WhatsApp</a></p>
     </footer>
-    <script>
-        document.getElementById("orderForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            let name = document.getElementById("name").value.trim();
-            let phone = document.getElementById("phone").value.trim();
-            let medicines = document.getElementById("medicines").value.trim();
-            if (!name || !phone || !medicines) {
-                alert("Please fill all required fields.");
-                return;
-            }
-            let confirmationMessage = "Your order has been placed! We will contact you soon.";
-            document.getElementById("confirmation").innerText
+
+<script>
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let name = document.getElementById("name").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let medicines = document.getElementById("medicines").value.trim();
+        if (!name || !phone || !medicines) {
+            alert("Please fill all required fields.");
+            return;
+        }
+        let confirmationMessage = "Your order has been placed! We will contact you soon.";
+        document.getElementById("confirmation").innerText = confirmationMessage;
+        
+        let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
+        let whatsappURL = `https://wa.me/918185903453?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        setTimeout(() => {
+            window.open(whatsappURL, "_blank");
+        }, 1000);
+    });
+</script>
