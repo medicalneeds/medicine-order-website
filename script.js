@@ -1,16 +1,23 @@
-document.getElementById("orderForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let medicines = document.getElementById("medicines").value;
+<script>
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone").value;
+        let medicines = document.getElementById("medicines").value;
 
-    document.getElementById("confirmation").innerHTML = 
-        "Your order has been placed! We will contact you soon.";
-    
-    // Simulating order submission
-    console.log("Order Details:");
-    console.log("Name:", name);
-    console.log("Phone:", phone);
-    console.log("Medicines:", medicines);
-});
+        if (!name || !phone || !medicines) {
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        let confirmationMessage = "Your order has been placed! We will contact you soon.";
+        document.getElementById("confirmation").innerText = confirmationMessage;
+
+        let whatsappMessage = `New Order Received!%0AName: ${encodeURIComponent(name)}%0AContact: ${encodeURIComponent(phone)}%0AMedicines: ${encodeURIComponent(medicines)}`;
+
+        // Ensure WhatsApp opens correctly
+        let whatsappURL = `https://wa.me/8185903453?text=${whatsappMessage}`;
+        window.location.href = whatsappURL;
+    });
+</script>
