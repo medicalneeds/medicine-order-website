@@ -14,10 +14,10 @@
         let confirmationMessage = "Your order has been placed! We will contact you soon.";
         document.getElementById("confirmation").innerText = confirmationMessage;
 
-        let whatsappMessage = `New Order Received!%0AName: ${encodeURIComponent(name)}%0AContact: ${encodeURIComponent(phone)}%0AMedicines: ${encodeURIComponent(medicines)}`;
-
-        // Ensure WhatsApp opens correctly
-        let whatsappURL = `https://wa.me/8185903453?text=${whatsappMessage}`;
-        window.location.href = whatsappURL;
+        let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
+        
+        // Ensure WhatsApp opens in a new tab
+        let whatsappURL = `https://wa.me/8185903453?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappURL, '_blank');
     });
 </script>
