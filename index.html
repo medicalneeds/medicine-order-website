@@ -33,21 +33,13 @@
         <p>WhatsApp: <a href="https://wa.me/8185903453">8185903453</a></p>
     </footer>
     
-    <script>
-        document.getElementById("orderForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById("name").value;
-            let phone = document.getElementById("phone").value;
-            let medicines = document.getElementById("medicines").value;
-            let confirmationMessage = "Your order has been
 <script>
     document.getElementById("orderForm").addEventListener("submit", function(event) {
         event.preventDefault();
         
-        let name = document.getElementById("name").value;
-        let phone = document.getElementById("phone").value;
-        let medicines = document.getElementById("medicines").value;
+        let name = document.getElementById("name").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let medicines = document.getElementById("medicines").value.trim();
 
         if (!name || !phone || !medicines) {
             alert("Please fill all required fields.");
@@ -59,8 +51,10 @@
 
         let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
         
-        // Force open WhatsApp in a new tab
-        let whatsappURL = `https://wa.me/8185903453?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappURL, '_blank');
+        // Ensure correct WhatsApp number format
+        let whatsappNumber = "918185903453"; // Add country code before number
+        let whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+        
+        window.location.href = whatsappURL; // Open in the same tab
     });
 </script>
