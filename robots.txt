@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://medicalneeds.github.io/medicine-order-website/sitemap.xml
