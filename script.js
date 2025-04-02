@@ -18,6 +18,6 @@
         
         // Ensure WhatsApp opens in a new tab
         let whatsappURL = `https://wa.me/8185903453?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappURL, '_blank');
+        window.location.href = whatsappURL;
     });
 </script>
