@@ -51,10 +51,9 @@
 
         let whatsappMessage = `New Order Received!\nName: ${name}\nContact: ${phone}\nMedicines: ${medicines}`;
         
-        // Ensure correct WhatsApp number format
-        let whatsappNumber = "918185903453"; // Add country code before number
-        let whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+        // Correct WhatsApp link with API format
+        let whatsappURL = `https://api.whatsapp.com/send?phone=918185903453&text=${encodeURIComponent(whatsappMessage)}`;
         
-        window.location.href = whatsappURL; // Open in the same tab
+        window.location.href = whatsappURL; // Open WhatsApp in the same tab
     });
 </script>
